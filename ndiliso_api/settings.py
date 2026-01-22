@@ -14,11 +14,13 @@ import os
 import dj_database_url
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env")
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,12 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-# 'django-insecure-2&g_6ti=g@n$wa_&*+h-tf@78(+x9xch!k76+^4#oa9dvkdc#r'
+# 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split()
 
 
 # Application definition
@@ -92,7 +94,7 @@ DATABASES = {
         database_url
     )
 }
-#postgresql://root:gfbFjefAU72QOjaNKydWnZfYBfMrzdbh@dpg-d5ensc5actks7388cstg-a.oregon-postgres.render.com/ndiliso_db_8w91
+
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
