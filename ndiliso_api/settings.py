@@ -89,11 +89,24 @@ WSGI_APPLICATION = 'ndiliso_api.wsgi.application'
 
 
 database_url = os.environ.get('DATABASE_URL')
+#DATABASES = {
+#   'default': dj_database_url.parse(
+#        database_url
+#    )
+#}
+
 DATABASES = {
-    'default': dj_database_url.parse(
-        database_url
-    )
+    "default": {
+        "ENGINE": os.environ.get("DB_ENGINE"),
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
+        
+    }
 }
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
